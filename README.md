@@ -15,17 +15,17 @@ https://forum.primefaces.org/viewtopic.php?t=55946
 
 ### NPM
 - Install dependencies from scratch
-`rm -rf node_modules/ -- in windows: rmdir /q /s folder_name
+```rm -rf node_modules/ -- in windows: rmdir /q /s folder_name
 npm cache clean
-npm install`
+npm install```
 
 ### UI: Remove html tags except
 Use a negative lookahead (by using a regex such as /<(?!br\s*\/?)[^>]+>/g):
-`var html = 'this is my <b>string</b> and it\'s pretty cool<br />isn\'t it?<br>Yep, it is. <strong>More HTML tags</strong>';
+```var html = 'this is my <b>string</b> and it\'s pretty cool<br />isn\'t it?<br>Yep, it is. <strong>More HTML tags</strong>';
 html = html.replace(/<(?!br\s*\/?)[^>]+>/g, '');
 console.log(html); 
 //this is my string and it's pretty cool<br />isn't it?<br>Yep, it is. More HTML tags
-`
+```
 
 ### UI: Angular Focus form element
 Use native angular Renderer2 module
