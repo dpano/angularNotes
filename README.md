@@ -4,14 +4,14 @@ Keep some notes for angular development
 ### Turbo table sort
 set only specific columns to be sortable
 https://forum.primefaces.org/viewtopic.php?t=55946
-
+```css
 :host >>> .doc-relevance .ui-slider {
     background: #14a4ff
 }
 :host >>> .doc-relevance .ui-slider-range-min {
     background: #aaa
 }
-
+```css
 
 ### NPM
 - Install dependencies from scratch
