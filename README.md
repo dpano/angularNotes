@@ -15,9 +15,9 @@ https://forum.primefaces.org/viewtopic.php?t=55946
 
 ### NPM
 - Install dependencies from scratch
-rm -rf node_modules/ -- in windows: rmdir /q /s folder_name
+`rm -rf node_modules/ -- in windows: rmdir /q /s folder_name
 npm cache clean
-npm install
+npm install`
 
 ### UI: Remove html tags except
 Use a negative lookahead (by using a regex such as /<(?!br\s*\/?)[^>]+>/g):
