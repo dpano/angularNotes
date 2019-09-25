@@ -11,7 +11,7 @@ https://forum.primefaces.org/viewtopic.php?t=55946
 :host >>> .doc-relevance .ui-slider-range-min {
     background: #aaa
 }
-```css
+```
 
 ### NPM
 - Install dependencies from scratch
