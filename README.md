@@ -54,3 +54,60 @@ onClick(event){
             .scrollIntoView({ behavior: 'smooth', block: 'start', inline: 'nearest' });
     }
 ```
+### UI: innerHTML, detect InnerHtml has been rendered
+[[issue link]](https://github.com/angular/angular/issues/21163), [[example stackblitz]](https://stackblitz.com/edit/angular-mutationobserver)
+
+#### Create the directive 
+```typescript
+import { Directive, ElementRef, EventEmitter, Output, OnDestroy } from '@angular/core';
+
+@Directive({
+  selector: '[appAppMotationObserver]'
+})
+export class AppMotationObserverDirective implements OnDestroy {
+  _observer: MutationObserver;
+  @Output() innerHtmlRendered = new EventEmitter();
+
+  constructor(private el: ElementRef) {
+    this._observer = new MutationObserver((mutations) => {
+      mutations.forEach((mutation, index) => {
+        if (mutation.type === 'childList') {
+          this.innerHtmlRendered.emit();
+        }
+      });
+    });
+    this._observer.observe(
+      this.el.nativeElement,
+      { attributes: true, childList: true, characterData: true }
+    );
+  }
+
+  ngOnDestroy() {
+    if (this._observer) {
+      this._observer.disconnect();
+    }
+  }
+
+}
+```
+#### component.html
+```html
+  <p [innerHTML]="text"
+    appAppMotationObserver 
+    (innerHtmlRendered)="renderedCb()"></p>
+
+  <p *ngIf="!text">wait for async...</p>
+```
+#### component.ts
+```typescript
+.
+.
+.
+// catch the emitted event
+renderedCb() {
+    console.log('rendered...')
+  }
+.
+.
+.
+```
